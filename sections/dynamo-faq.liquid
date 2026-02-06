@@ -1,0 +1,88 @@
+{{ 'dynamo-faq.css' | asset_url | stylesheet_tag }}
+
+<section class="dynamo-section section-steel">
+  <div class="dynamo-container" style="max-width: 48rem;">
+    <div class="dynamo-section-header">
+      <p class="dynamo-eyebrow" style="color: var(--color-teal);">{{ section.settings.eyebrow }}</p>
+      <h2 class="dynamo-heading dynamo-heading--xl">{{ section.settings.heading }}</h2>
+    </div>
+
+    <div class="faq-list">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'faq_item' -%}
+          <div class="faq-item" {{ block.shopify_attributes }}>
+            <button class="faq-item__trigger" data-accordion-trigger aria-expanded="false">
+              <span class="faq-item__question">{{ block.settings.question }}</span>
+              <svg data-accordion-icon xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.2s ease; flex-shrink: 0;"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-item__content" style="max-height: 0; opacity: 0; overflow: hidden; transition: max-height 0.3s ease, opacity 0.3s ease;">
+              <div class="faq-item__answer">
+                {{ block.settings.answer }}
+              </div>
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "tag": "section",
+  "class": "shopify-section--faq",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "FAQ"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Frequently Asked Questions"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "How do Dynamo Delay Wipes work?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Dynamo Delay Wipes contain 4% Benzocaine, a topical anesthetic that temporarily reduces sensitivity. Simply apply the wipe 5-10 minutes before intimacy for longer-lasting performance.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ",
+      "blocks": [
+        { "type": "faq_item", "settings": { "question": "How do Dynamo Delay Wipes work?", "answer": "<p>Dynamo Delay Wipes contain 4% Benzocaine, a topical anesthetic that temporarily reduces sensitivity. Simply apply the wipe 5-10 minutes before intimacy for longer-lasting performance.</p>" } },
+        { "type": "faq_item", "settings": { "question": "How many wipes should I use at a time?", "answer": "<p>Just one wipe per use is all you need. The pre-measured formula ensures the right amount every time.</p>" } },
+        { "type": "faq_item", "settings": { "question": "How long does it take to start working?", "answer": "<p>The wipes begin working within 5-10 minutes of application. Allow the formula to dry completely before intimacy.</p>" } },
+        { "type": "faq_item", "settings": { "question": "Are they safe for oral contact?", "answer": "<p>We recommend washing the area thoroughly after the formula has absorbed and before any oral contact to prevent transfer.</p>" } },
+        { "type": "faq_item", "settings": { "question": "Can I use them with condoms?", "answer": "<p>Yes! Dynamo Delay Wipes are compatible with latex condoms. Apply the wipe first, let it dry, then use a condom as normal.</p>" } },
+        { "type": "faq_item", "settings": { "question": "Are there any side effects?", "answer": "<p>Benzocaine is FDA-recognized and used in thousands of OTC products. Some users may experience mild temporary numbness. If irritation occurs, discontinue use.</p>" } },
+        { "type": "faq_item", "settings": { "question": "How long do the effects last?", "answer": "<p>Effects typically last 30-60 minutes and fade naturally on their own. No need to do anything — the formula wears off by itself.</p>" } },
+        { "type": "faq_item", "settings": { "question": "Wipes vs spray — what's the difference?", "answer": "<p>Wipes offer more targeted, mess-free application. No over-spray, no dripping, and they're individually wrapped for ultimate discretion and portability.</p>" } },
+        { "type": "faq_item", "settings": { "question": "Is there a money-back guarantee?", "answer": "<p>Yes! We offer a 30-day money-back guarantee. If you're not satisfied, contact us for a full refund — no questions asked.</p>" } },
+        { "type": "faq_item", "settings": { "question": "How should I store them?", "answer": "<p>Store in a cool, dry place. The individually wrapped foil packets keep each wipe fresh until you're ready to use it.</p>" } },
+        { "type": "faq_item", "settings": { "question": "Will my order arrive discreetly?", "answer": "<p>Absolutely. All orders ship in plain, unmarked packaging with no product names or descriptions visible on the outside.</p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

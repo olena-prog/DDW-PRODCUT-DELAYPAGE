@@ -1,0 +1,248 @@
+{{ 'dynamo-how-it-works.css' | asset_url | stylesheet_tag }}
+
+<section class="dynamo-section section-cream">
+  <div class="dynamo-container" style="max-width: 80rem;">
+    <!-- Section Header -->
+    <div class="hiw-header">
+      <p class="dynamo-eyebrow" style="color: var(--color-mint);">{{ section.settings.eyebrow }}</p>
+      <h2 class="dynamo-heading dynamo-heading--xl">{{ section.settings.heading }}</h2>
+      <p class="hiw-header__desc">{{ section.settings.description }}</p>
+      <div class="hiw-header__flow">
+        <span>{{ section.settings.flow_1 }}</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        <span>{{ section.settings.flow_2 }}</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        <span class="hiw-header__flow-highlight">{{ section.settings.flow_3 }}</span>
+      </div>
+    </div>
+
+    <!-- Steps -->
+    <div class="hiw-steps">
+      <h3 class="hiw-steps__title">{{ section.settings.steps_heading }}</h3>
+      <div class="hiw-steps__grid">
+        <div class="hiw-steps__line"></div>
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'process_step' -%}
+            <div class="hiw-step" {{ block.shopify_attributes }}>
+              <div class="hiw-step__card">
+                <div class="hiw-step__icon">
+                  {%- case block.settings.icon -%}
+                    {%- when 'droplets' -%}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z"/><path d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97"/></svg>
+                    {%- when 'brain' -%}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/></svg>
+                    {%- when 'shield' -%}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+                    {%- when 'timer' -%}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="10" x2="14" y1="2" y2="2"/><line x1="12" x2="15" y1="14" y2="11"/><circle cx="12" cy="14" r="8"/></svg>
+                  {%- endcase -%}
+                </div>
+                <h4 class="hiw-step__name">{{ block.settings.title }}</h4>
+                <p class="hiw-step__desc">{{ block.settings.description }}</p>
+              </div>
+              {%- unless forloop.last -%}
+                <div class="hiw-step__arrow">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-steel)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </div>
+              {%- endunless -%}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+
+    <!-- Benzocaine Info -->
+    <div class="hiw-info">
+      <div class="hiw-info__image-col">
+        {%- if section.settings.info_image != blank -%}
+          <img
+            src="{{ section.settings.info_image | image_url: width: 600 }}"
+            srcset="{{ section.settings.info_image | image_url: width: 300 }} 300w, {{ section.settings.info_image | image_url: width: 600 }} 600w"
+            sizes="(max-width: 1024px) 100vw, 40vw"
+            alt="{{ section.settings.info_image.alt | default: 'Product image' | escape }}"
+            loading="lazy"
+            class="hiw-info__image"
+          >
+        {%- else -%}
+          <div class="dynamo-image-placeholder" style="min-height: 300px;">
+            {{ 'product-2' | placeholder_svg_tag: 'placeholder-svg' }}
+          </div>
+        {%- endif -%}
+      </div>
+      <div class="hiw-info__content-col">
+        <div class="hiw-info__card">
+          <div class="hiw-info__card-header">
+            <div class="hiw-info__card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-mint)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></svg>
+            </div>
+            <h3 class="dynamo-heading dynamo-heading--lg">{{ section.settings.info_heading }}</h3>
+          </div>
+          <p class="hiw-info__text">{{ section.settings.info_description }}</p>
+          <div class="hiw-info__badges">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'info_badge' -%}
+                <div class="hiw-info__badge-item" {{ block.shopify_attributes }}>
+                  {%- case block.settings.icon -%}
+                    {%- when 'badge-check' -%}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-mint)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></svg>
+                    {%- when 'pill' -%}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-mint)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/><path d="m8.5 8.5 7 7"/></svg>
+                    {%- when 'shield' -%}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-mint)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+                    {%- when 'timer' -%}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-mint)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="10" x2="14" y1="2" y2="2"/><line x1="12" x2="15" y1="14" y2="11"/><circle cx="12" cy="14" r="8"/></svg>
+                  {%- endcase -%}
+                  <span>{{ block.settings.text }}</span>
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "How It Works",
+  "tag": "section",
+  "class": "shopify-section--how-it-works",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "How It Works"
+    },
+    {
+      "type": "html",
+      "id": "heading",
+      "label": "Heading",
+      "default": "The Science Behind <span style='color: var(--color-teal);'>the Confidence</span>"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Dynamo Delay Wipes use 4% Benzocaine, a clinically proven topical anesthetic that temporarily reduces sensitivity where applied."
+    },
+    {
+      "type": "text",
+      "id": "flow_1",
+      "label": "Flow Step 1",
+      "default": "Less sensitivity"
+    },
+    {
+      "type": "text",
+      "id": "flow_2",
+      "label": "Flow Step 2",
+      "default": "More control"
+    },
+    {
+      "type": "text",
+      "id": "flow_3",
+      "label": "Flow Step 3",
+      "default": "Longer-lasting intimacy"
+    },
+    {
+      "type": "text",
+      "id": "steps_heading",
+      "label": "Steps Heading",
+      "default": "Here's what happens:"
+    },
+    {
+      "type": "header",
+      "content": "Info Section Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "info_image",
+      "label": "Benzocaine Section Image"
+    },
+    {
+      "type": "text",
+      "id": "info_heading",
+      "label": "Info Heading",
+      "default": "Why Benzocaine?"
+    },
+    {
+      "type": "textarea",
+      "id": "info_description",
+      "label": "Info Description",
+      "default": "Benzocaine is trusted, FDA-recognized, and used in thousands of over-the-counter products. It works only where you apply it — no pills, no systemic side effects, no prescription needed."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "process_step",
+      "name": "Process Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "You apply"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Benzocaine absorbs into the skin within 5 minutes"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "droplets", "label": "Droplets" },
+            { "value": "brain", "label": "Brain" },
+            { "value": "shield", "label": "Shield" },
+            { "value": "timer", "label": "Timer" }
+          ],
+          "default": "droplets"
+        }
+      ]
+    },
+    {
+      "type": "info_badge",
+      "name": "Info Badge",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Badge Text",
+          "default": "FDA-Recognized"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "badge-check", "label": "Badge Check" },
+            { "value": "pill", "label": "Pill" },
+            { "value": "shield", "label": "Shield" },
+            { "value": "timer", "label": "Timer" }
+          ],
+          "default": "badge-check"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "How It Works",
+      "blocks": [
+        { "type": "process_step", "settings": { "title": "You apply", "description": "Benzocaine absorbs into the skin within 5 minutes", "icon": "droplets" } },
+        { "type": "process_step", "settings": { "title": "Nerves calm down", "description": "The formula temporarily blocks oversensitive nerve signals", "icon": "brain" } },
+        { "type": "process_step", "settings": { "title": "You stay in control", "description": "Ejaculation is delayed without losing pleasure", "icon": "shield" } },
+        { "type": "process_step", "settings": { "title": "It wears off naturally", "description": "Effects last 30–60 minutes, then fade on their own", "icon": "timer" } },
+        { "type": "info_badge", "settings": { "text": "FDA-Recognized", "icon": "badge-check" } },
+        { "type": "info_badge", "settings": { "text": "No Pills Needed", "icon": "pill" } },
+        { "type": "info_badge", "settings": { "text": "No Side Effects", "icon": "shield" } },
+        { "type": "info_badge", "settings": { "text": "Wears Off Naturally", "icon": "timer" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

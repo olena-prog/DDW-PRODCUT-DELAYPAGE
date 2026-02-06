@@ -1,0 +1,195 @@
+{{ 'dynamo-better-for-both.css' | asset_url | stylesheet_tag }}
+
+<section class="dynamo-section section-cream">
+  <div class="dynamo-container" style="max-width: 80rem;">
+    <!-- Section Header -->
+    <div class="dynamo-section-header">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="dynamo-eyebrow" style="color: var(--color-mint);">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.heading != blank -%}
+        <h2 class="dynamo-heading dynamo-heading--xl">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+    </div>
+
+    <div class="bfb-grid">
+      <!-- For Him Card -->
+      <div class="bfb-card">
+        <div class="bfb-card__image">
+          {%- if section.settings.him_image != blank -%}
+            <img
+              src="{{ section.settings.him_image | image_url: width: 800 }}"
+              srcset="
+                {{ section.settings.him_image | image_url: width: 400 }} 400w,
+                {{ section.settings.him_image | image_url: width: 600 }} 600w,
+                {{ section.settings.him_image | image_url: width: 800 }} 800w
+              "
+              sizes="(min-width: 768px) 50vw, 100vw"
+              alt="{{ section.settings.him_image.alt | default: 'For Him' | escape }}"
+              loading="lazy"
+              width="{{ section.settings.him_image.width }}"
+              height="{{ section.settings.him_image.height }}"
+            >
+          {%- else -%}
+            <div class="dynamo-image-placeholder" style="height: 100%;">
+              {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+          {%- endif -%}
+          <div class="bfb-card__gradient bfb-card__gradient--him"></div>
+          <span class="bfb-card__title">{{ section.settings.him_title }}</span>
+        </div>
+        <div class="bfb-card__content bfb-card__content--him">
+          <ul class="bfb-card__list bfb-card__list--him">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'him_point' -%}
+                <li class="bfb-card__item" {{ block.shopify_attributes }}>
+                  <span class="bfb-card__check">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                  </span>
+                  <span>{{ block.settings.text }}</span>
+                </li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        </div>
+      </div>
+
+      <!-- For Her Card -->
+      <div class="bfb-card">
+        <div class="bfb-card__image">
+          {%- if section.settings.her_image != blank -%}
+            <img
+              src="{{ section.settings.her_image | image_url: width: 800 }}"
+              srcset="
+                {{ section.settings.her_image | image_url: width: 400 }} 400w,
+                {{ section.settings.her_image | image_url: width: 600 }} 600w,
+                {{ section.settings.her_image | image_url: width: 800 }} 800w
+              "
+              sizes="(min-width: 768px) 50vw, 100vw"
+              alt="{{ section.settings.her_image.alt | default: 'For Her' | escape }}"
+              loading="lazy"
+              width="{{ section.settings.her_image.width }}"
+              height="{{ section.settings.her_image.height }}"
+            >
+          {%- else -%}
+            <div class="dynamo-image-placeholder" style="height: 100%;">
+              {{ 'product-2' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+          {%- endif -%}
+          <div class="bfb-card__gradient bfb-card__gradient--her"></div>
+          <span class="bfb-card__title">{{ section.settings.her_title }}</span>
+        </div>
+        <div class="bfb-card__content bfb-card__content--her">
+          <ul class="bfb-card__list bfb-card__list--her">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'her_point' -%}
+                <li class="bfb-card__item" {{ block.shopify_attributes }}>
+                  <span class="bfb-card__check">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                  </span>
+                  <span>{{ block.settings.text }}</span>
+                </li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Better for Both",
+  "tag": "section",
+  "class": "shopify-section--better-for-both",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "For Both"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Better for Both of You"
+    },
+    {
+      "type": "header",
+      "content": "For Him"
+    },
+    {
+      "type": "image_picker",
+      "id": "him_image",
+      "label": "Him Image"
+    },
+    {
+      "type": "text",
+      "id": "him_title",
+      "label": "Him Title",
+      "default": "For Him"
+    },
+    {
+      "type": "header",
+      "content": "For Her"
+    },
+    {
+      "type": "image_picker",
+      "id": "her_image",
+      "label": "Her Image"
+    },
+    {
+      "type": "text",
+      "id": "her_title",
+      "label": "Her Title",
+      "default": "For Her"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "him_point",
+      "name": "Him Point",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Point Text",
+          "default": "Last longer with confidence"
+        }
+      ]
+    },
+    {
+      "type": "her_point",
+      "name": "Her Point",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Point Text",
+          "default": "More satisfying intimacy"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Better for Both",
+      "blocks": [
+        { "type": "him_point", "settings": { "text": "Last longer with confidence" } },
+        { "type": "him_point", "settings": { "text": "Reduce performance anxiety" } },
+        { "type": "him_point", "settings": { "text": "Stay in control without losing sensation" } },
+        { "type": "him_point", "settings": { "text": "No pills or prescriptions needed" } },
+        { "type": "him_point", "settings": { "text": "Boost self-esteem in the bedroom" } },
+        { "type": "her_point", "settings": { "text": "More satisfying intimacy" } },
+        { "type": "her_point", "settings": { "text": "Deeper emotional connection" } },
+        { "type": "her_point", "settings": { "text": "No numbing or transfer to her" } },
+        { "type": "her_point", "settings": { "text": "Longer, more enjoyable experiences" } },
+        { "type": "her_point", "settings": { "text": "A partner who feels confident" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

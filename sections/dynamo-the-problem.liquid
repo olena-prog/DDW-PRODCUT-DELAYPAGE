@@ -1,0 +1,177 @@
+{{ 'dynamo-the-problem.css' | asset_url | stylesheet_tag }}
+
+<section class="dynamo-section section-teal" style="overflow: hidden;">
+  <div class="dynamo-container" style="max-width: 80rem;">
+    <div class="problem-grid">
+      <!-- Left Column: Stats & Problem Description -->
+      <div class="problem-content">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="dynamo-eyebrow" style="color: var(--color-mint);">{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+
+        {%- if section.settings.heading != blank -%}
+          <h2 class="dynamo-heading dynamo-heading--xl" style="color: var(--color-white);">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+
+        <!-- Stats Grid -->
+        <div class="problem-stats">
+          <div class="problem-stat">
+            <span class="problem-stat__value">{{ section.settings.stat_1_value }}</span>
+            <span class="problem-stat__label">{{ section.settings.stat_1_label }}</span>
+          </div>
+          <div class="problem-stat">
+            <span class="problem-stat__value">{{ section.settings.stat_2_value }}</span>
+            <span class="problem-stat__label">{{ section.settings.stat_2_label }}</span>
+          </div>
+          <div class="problem-stat">
+            <span class="problem-stat__value">{{ section.settings.stat_3_value }}</span>
+            <span class="problem-stat__label">{{ section.settings.stat_3_label }}</span>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="problem-divider"></div>
+
+        {%- if section.settings.body_text != blank -%}
+          <p class="problem-body">{{ section.settings.body_text }}</p>
+        {%- endif -%}
+      </div>
+
+      <!-- Right Column: Solution Glass Card -->
+      <div class="problem-solution">
+        <div class="problem-solution__card">
+          <div class="problem-solution__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-mint)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/>
+              <path d="m9 12 2 2 4-4"/>
+            </svg>
+          </div>
+
+          {%- if section.settings.solution_heading != blank -%}
+            <h3 class="problem-solution__heading">{{ section.settings.solution_heading }}</h3>
+          {%- endif -%}
+
+          {%- if section.settings.solution_description != blank -%}
+            <p class="problem-solution__desc">{{ section.settings.solution_description }}</p>
+          {%- endif -%}
+
+          <ul class="problem-solution__list">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'solution_point' -%}
+                <li class="problem-solution__item" {{ block.shopify_attributes }}>
+                  <span class="problem-solution__dot"></span>
+                  <span>{{ block.settings.text }}</span>
+                </li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "The Problem",
+  "tag": "section",
+  "class": "shopify-section--the-problem",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "The Problem"
+    },
+    {
+      "type": "html",
+      "id": "heading",
+      "label": "Heading",
+      "default": "You're Not Alone — PE Affects <span style='color: var(--color-mint);'>1 in 3 Men</span>"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_value",
+      "label": "Stat 1 Value",
+      "default": "30%"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_label",
+      "label": "Stat 1 Label",
+      "default": "of men experience PE at some point"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_value",
+      "label": "Stat 2 Value",
+      "default": "75%"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_label",
+      "label": "Stat 2 Label",
+      "default": "say it impacts their confidence"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_value",
+      "label": "Stat 3 Value",
+      "default": "#1"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_label",
+      "label": "Stat 3 Label",
+      "default": "most common male sexual concern"
+    },
+    {
+      "type": "textarea",
+      "id": "body_text",
+      "label": "Body Text",
+      "default": "Premature ejaculation is the most common sexual performance issue men face — yet most suffer in silence. It affects relationships, self-esteem, and intimacy. The good news? There's a simple, proven solution."
+    },
+    {
+      "type": "header",
+      "content": "Solution Card"
+    },
+    {
+      "type": "text",
+      "id": "solution_heading",
+      "label": "Solution Heading",
+      "default": "The Solution Exists"
+    },
+    {
+      "type": "textarea",
+      "id": "solution_description",
+      "label": "Solution Description",
+      "default": "Dynamo Delay Wipes use clinically proven benzocaine to give you the control you've been looking for — discreetly and effectively."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "solution_point",
+      "name": "Solution Point",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Point Text",
+          "default": "Clinically proven active ingredient"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "The Problem",
+      "blocks": [
+        { "type": "solution_point", "settings": { "text": "Clinically proven active ingredient" } },
+        { "type": "solution_point", "settings": { "text": "Works in just 5–10 minutes" } },
+        { "type": "solution_point", "settings": { "text": "No prescription required" } },
+        { "type": "solution_point", "settings": { "text": "Discreet, mess-free wipe format" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

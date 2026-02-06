@@ -1,0 +1,129 @@
+/* ---- How to Use Section ---- */
+.how-to-use__grid {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .how-to-use__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .how-to-use__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.how-to-use__card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  background: rgba(178, 190, 195, 0.15);
+  border: 1px solid rgba(178, 190, 195, 0.2);
+  transition: all 0.4s ease;
+}
+
+.how-to-use__card:hover {
+  background: var(--color-teal);
+  transform: translateY(-4px);
+}
+
+.how-to-use__number {
+  position: absolute;
+  top: 1rem;
+  right: 1.25rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 4rem;
+  color: rgba(13, 115, 119, 0.05);
+  line-height: 1;
+  user-select: none;
+  transition: color 0.4s ease;
+}
+
+.how-to-use__card:hover .how-to-use__number {
+  color: rgba(255, 255, 255, 0.05);
+}
+
+.how-to-use__icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--radius-md);
+  background: rgba(13, 115, 119, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+  color: var(--color-teal);
+}
+
+.how-to-use__card:hover .how-to-use__icon {
+  background: rgba(78, 205, 196, 0.2);
+  transform: scale(1.05);
+  color: var(--color-mint);
+}
+
+.how-to-use__title {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-foreground);
+  margin-bottom: 0.25rem;
+  transition: color 0.3s ease;
+}
+
+.how-to-use__card:hover .how-to-use__title {
+  color: var(--color-white);
+}
+
+.how-to-use__text {
+  font-size: 0.875rem;
+  color: rgba(45, 52, 54, 0.6);
+  line-height: 1.6;
+  transition: color 0.3s ease;
+}
+
+.how-to-use__card:hover .how-to-use__text {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Pro Tip */
+.how-to-use__tip {
+  margin-top: 1.5rem;
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  border: 1px solid rgba(255, 107, 53, 0.2);
+  background: rgba(255, 107, 53, 0.05);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.how-to-use__tip-icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--radius-md);
+  background: rgba(255, 107, 53, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-orange);
+}
+
+.how-to-use__tip-label {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--color-orange);
+  margin-bottom: 0.125rem;
+}
+
+.how-to-use__tip-text {
+  font-size: 0.875rem;
+  color: rgba(45, 52, 54, 0.6);
+  line-height: 1.6;
+}

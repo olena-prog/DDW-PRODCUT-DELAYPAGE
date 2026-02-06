@@ -1,0 +1,135 @@
+{{ 'dynamo-how-to-use.css' | asset_url | stylesheet_tag }}
+
+<section class="dynamo-section section-white">
+  <div class="dynamo-container" style="max-width: 80rem;">
+    <div class="dynamo-section-header">
+      <p class="dynamo-eyebrow" style="color: var(--color-orange);">{{ section.settings.eyebrow }}</p>
+      <h2 class="dynamo-heading dynamo-heading--xl">{{ section.settings.heading }}</h2>
+    </div>
+
+    <div class="how-to-use__wrapper" style="max-width: 64rem; margin: 0 auto;">
+      <div class="how-to-use__grid">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'step' -%}
+            <div class="how-to-use__card" {{ block.shopify_attributes }}>
+              <span class="how-to-use__number">{{ block.settings.step_number }}</span>
+              <div class="how-to-use__icon">
+                {%- case block.settings.icon -%}
+                  {%- when 'package' -%}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-9"/><path d="M15.17 2.21a1.67 1.67 0 0 1 1.63 0L21 4.57a1.93 1.93 0 0 1 0 3.36L8.82 14.79a1.655 1.655 0 0 1-1.64 0L3 12.43a1.93 1.93 0 0 1 0-3.36z"/><path d="M20 13v3.87a2.06 2.06 0 0 1-1.11 1.83l-6 3.08a1.93 1.93 0 0 1-1.78 0l-6-3.08A2.06 2.06 0 0 1 4 16.87V13"/><path d="M21 12.43a1.93 1.93 0 0 0 0-3.36L8.83 2.2a1.64 1.64 0 0 0-1.63 0L3 4.57a1.93 1.93 0 0 0 0 3.36l12.18 6.86a1.636 1.636 0 0 0 1.63 0z"/></svg>
+                  {%- when 'hand' -%}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2"/><path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg>
+                  {%- when 'clock' -%}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  {%- when 'heart' -%}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                {%- endcase -%}
+              </div>
+              <h3 class="how-to-use__title">{{ block.settings.title }}</h3>
+              <p class="how-to-use__text">{{ block.settings.description }}</p>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      {%- if section.settings.pro_tip_text != blank -%}
+        <div class="how-to-use__tip">
+          <div class="how-to-use__tip-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
+          </div>
+          <div>
+            <p class="how-to-use__tip-label">{{ section.settings.pro_tip_label }}</p>
+            <p class="how-to-use__tip-text">{{ section.settings.pro_tip_text }}</p>
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "How to Use",
+  "tag": "section",
+  "class": "shopify-section--how-to-use",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "How to Use"
+    },
+    {
+      "type": "html",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Ready in <span style='color: var(--color-orange);'>4 Simple</span> Steps"
+    },
+    {
+      "type": "header",
+      "content": "Pro Tip"
+    },
+    {
+      "type": "text",
+      "id": "pro_tip_label",
+      "label": "Pro Tip Label",
+      "default": "Pro Tip"
+    },
+    {
+      "type": "textarea",
+      "id": "pro_tip_text",
+      "label": "Pro Tip Text",
+      "default": "One wipe is all you need. The targeted application puts the formula exactly where it counts — no guessing, no waste."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "step_number",
+          "label": "Step Number",
+          "default": "01"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Step Title",
+          "default": "OPEN"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Step Description",
+          "default": "Tear open the foil packet and remove the wipe."
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "package", "label": "Package" },
+            { "value": "hand", "label": "Hand" },
+            { "value": "clock", "label": "Clock" },
+            { "value": "heart", "label": "Heart" }
+          ],
+          "default": "package"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "How to Use",
+      "blocks": [
+        { "type": "step", "settings": { "step_number": "01", "title": "OPEN", "description": "Tear open the foil packet and remove the wipe.", "icon": "package" } },
+        { "type": "step", "settings": { "step_number": "02", "title": "APPLY", "description": "Gently wipe the head and shaft — exactly where you need control.", "icon": "hand" } },
+        { "type": "step", "settings": { "step_number": "03", "title": "WAIT", "description": "Give it 5 minutes to dry and absorb. Fast-drying formula means no sticky mess.", "icon": "clock" } },
+        { "type": "step", "settings": { "step_number": "04", "title": "ENJOY", "description": "You're ready. Wash off after intimacy.", "icon": "heart" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

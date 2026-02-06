@@ -1,0 +1,76 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Dynamo Delay Wipes Landing Page",
+    "theme_version": "1.0.0",
+    "theme_author": "Dynamo Wellness",
+    "theme_documentation_url": "",
+    "theme_support_url": ""
+  },
+  {
+    "name": "Brand Colors",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Primary Colors"
+      },
+      {
+        "type": "color",
+        "id": "color_teal",
+        "label": "Teal (Primary)",
+        "default": "#0D7377"
+      },
+      {
+        "type": "color",
+        "id": "color_mint",
+        "label": "Mint (Accent)",
+        "default": "#4ECDC4"
+      },
+      {
+        "type": "color",
+        "id": "color_orange",
+        "label": "Orange (CTA)",
+        "default": "#FF6B35"
+      },
+      {
+        "type": "header",
+        "content": "Neutral Colors"
+      },
+      {
+        "type": "color",
+        "id": "color_charcoal",
+        "label": "Charcoal (Text)",
+        "default": "#2D3436"
+      },
+      {
+        "type": "color",
+        "id": "color_steel",
+        "label": "Steel (Subtle)",
+        "default": "#B2BEC3"
+      },
+      {
+        "type": "color",
+        "id": "color_cream",
+        "label": "Cream (Background)",
+        "default": "#FDFBF7"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "type_heading_font",
+        "label": "Heading Font",
+        "default": "poppins_n7"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_body_font",
+        "label": "Body Font",
+        "default": "poppins_n4"
+      }
+    ]
+  }
+]

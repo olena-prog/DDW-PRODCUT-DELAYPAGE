@@ -1,0 +1,252 @@
+/* ---- How It Works Section ---- */
+.hiw-header {
+  text-align: center;
+  max-width: 48rem;
+  margin: 0 auto 2rem;
+}
+
+.hiw-header__desc {
+  font-size: 1rem;
+  color: rgba(45, 52, 54, 0.8);
+  line-height: 1.7;
+  margin-top: 1rem;
+}
+
+.hiw-header__desc strong {
+  color: var(--color-foreground);
+}
+
+.hiw-header__flow {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+  padding: 0.625rem 1rem;
+  border-radius: var(--radius-full);
+  background: rgba(13, 115, 119, 0.1);
+  border: 1px solid rgba(13, 115, 119, 0.2);
+  font-size: 0.75rem;
+  color: var(--color-charcoal);
+}
+
+@media (min-width: 768px) {
+  .hiw-header__flow {
+    gap: 0.75rem;
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+  }
+}
+
+.hiw-header__flow-highlight {
+  font-weight: 600;
+  color: var(--color-teal);
+}
+
+/* Steps */
+.hiw-steps {
+  margin-bottom: 2.5rem;
+}
+
+.hiw-steps__title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--color-foreground);
+  margin-bottom: 1.5rem;
+}
+
+.hiw-steps__grid {
+  display: grid;
+  gap: 1rem;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .hiw-steps__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.hiw-steps__line {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .hiw-steps__line {
+    display: block;
+    position: absolute;
+    top: 2.5rem;
+    left: 12%;
+    right: 12%;
+    height: 1px;
+    background: rgba(178, 190, 195, 0.4);
+  }
+}
+
+.hiw-step__card {
+  background: var(--color-teal);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.4s ease;
+}
+
+.hiw-step__card:hover {
+  transform: translateY(-4px);
+}
+
+.hiw-step__icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: rgba(78, 205, 196, 0.2);
+  border: 2px solid rgba(78, 205, 196, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  color: var(--color-mint);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 10;
+}
+
+.hiw-step__card:hover .hiw-step__icon {
+  background: var(--color-mint);
+  border-color: var(--color-mint);
+  color: var(--color-teal);
+}
+
+.hiw-step__name {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-white);
+  margin-bottom: 0.5rem;
+}
+
+.hiw-step__desc {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+}
+
+.hiw-step__arrow {
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem 0;
+}
+
+.hiw-step__arrow svg {
+  transform: rotate(90deg);
+}
+
+@media (min-width: 768px) {
+  .hiw-step__arrow {
+    display: none;
+  }
+}
+
+/* Info Section */
+.hiw-info {
+  display: grid;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .hiw-info {
+    grid-template-columns: 2fr 3fr;
+    gap: 2.5rem;
+  }
+}
+
+.hiw-info__image-col {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .hiw-info__image-col {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.hiw-info__image {
+  width: 100%;
+  max-width: 24rem;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+  object-fit: cover;
+}
+
+.hiw-info__card {
+  background: rgba(178, 190, 195, 0.3);
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(178, 190, 195, 0.2);
+  padding: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .hiw-info__card {
+    padding: 2rem;
+  }
+}
+
+.hiw-info__card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.hiw-info__card-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-md);
+  background: rgba(78, 205, 196, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hiw-info__text {
+  font-size: 1rem;
+  color: rgba(45, 52, 54, 0.8);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.hiw-info__badges {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .hiw-info__badges {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+  }
+}
+
+.hiw-info__badge-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border-radius: var(--radius-md);
+  background: var(--color-white);
+  text-align: center;
+  box-shadow: var(--shadow-card);
+}
+
+.hiw-info__badge-item span {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-charcoal);
+}

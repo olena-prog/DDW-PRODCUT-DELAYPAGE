@@ -1,0 +1,119 @@
+{{ 'dynamo-you-may-also-like.css' | asset_url | stylesheet_tag }}
+
+<section class="dynamo-section section-teal">
+  <div class="dynamo-container" style="max-width: 72rem;">
+    <div class="dynamo-section-header">
+      <p class="dynamo-eyebrow" style="color: var(--color-mint);">{{ section.settings.eyebrow }}</p>
+      <h2 class="dynamo-heading dynamo-heading--lg" style="color: var(--color-white);">{{ section.settings.heading }}</h2>
+    </div>
+
+    <div class="ymal-grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'product_card' -%}
+          <div class="ymal-card" {{ block.shopify_attributes }}>
+            <div class="ymal-card__image">
+              {%- if block.settings.image != blank -%}
+                <img
+                  src="{{ block.settings.image | image_url: width: 400 }}"
+                  srcset="{{ block.settings.image | image_url: width: 200 }} 200w, {{ block.settings.image | image_url: width: 400 }} 400w"
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                  alt="{{ block.settings.title | escape }}"
+                  loading="lazy"
+                  class="ymal-card__img"
+                >
+              {%- else -%}
+                <div class="ymal-card__placeholder">
+                  <span>{{ block.settings.title | slice: 0, 1 | upcase }}</span>
+                </div>
+              {%- endif -%}
+            </div>
+            <div class="ymal-card__content">
+              <h3 class="ymal-card__title">{{ block.settings.title }}</h3>
+              <p class="ymal-card__subtitle">{{ block.settings.subtitle }}</p>
+              <div class="ymal-card__footer">
+                <p class="ymal-card__price">{{ block.settings.price }}</p>
+                {%- if block.settings.button_url != blank -%}
+                  <a href="{{ block.settings.button_url }}" target="_blank" rel="noopener noreferrer">
+                    <button type="button" class="dynamo-btn dynamo-btn--primary dynamo-btn--small">
+                      Shop
+                      <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </button>
+                  </a>
+                {%- endif -%}
+              </div>
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "You May Also Like",
+  "tag": "section",
+  "class": "shopify-section--ymal",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "Complete Your Kit"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "You May Also Like"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product_card",
+      "name": "Product Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Product Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Product Title",
+          "default": "Dynamo Delay Spray"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "13% Lidocaine — Maximum strength"
+        },
+        {
+          "type": "text",
+          "id": "price",
+          "label": "Price",
+          "default": "From $18.99"
+        },
+        {
+          "type": "url",
+          "id": "button_url",
+          "label": "Product URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "You May Also Like",
+      "blocks": [
+        { "type": "product_card", "settings": { "title": "Dynamo Delay Spray", "subtitle": "13% Lidocaine — Maximum strength", "price": "From $18.99" } },
+        { "type": "product_card", "settings": { "title": "Delay Wipes 18ct", "subtitle": "Save 17%", "price": "$29.99" } },
+        { "type": "product_card", "settings": { "title": "Delay Wipes 36ct", "subtitle": "Best Value · Save 31%", "price": "$49.99" } },
+        { "type": "product_card", "settings": { "title": "Date Night Kit", "subtitle": "Complete couples kit", "price": "$34.99" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

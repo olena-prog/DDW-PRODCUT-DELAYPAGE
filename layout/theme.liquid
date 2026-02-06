@@ -1,0 +1,178 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#0D7377">
+
+    <title>
+      {{ page_title }}
+      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    </title>
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    {{ 'dynamo-base.css' | asset_url | stylesheet_tag }}
+
+    {{ content_for_header }}
+
+    {%- liquid
+      assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
+      assign body_font_italic = settings.type_body_font | font_modify: 'style', 'italic'
+      assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
+    -%}
+  </head>
+
+  <body>
+    <a class="sr-only" href="#MainContent">{{ 'accessibility.skip_to_text' | t }}</a>
+
+    <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+
+    <script>
+      /* Carousel/slider functionality for sections */
+      document.addEventListener('DOMContentLoaded', function () {
+        /* Initialize all carousels */
+        document.querySelectorAll('[data-carousel]').forEach(function (carousel) {
+          var track = carousel.querySelector('[data-carousel-track]');
+          var slides = carousel.querySelectorAll('[data-carousel-slide]');
+          var prevBtn = carousel.querySelector('[data-carousel-prev]');
+          var nextBtn = carousel.querySelector('[data-carousel-next]');
+          var dots = carousel.querySelectorAll('[data-carousel-dot]');
+          var thumbs = carousel.querySelectorAll('[data-carousel-thumb]');
+          var currentIndex = 0;
+          var totalSlides = slides.length;
+
+          if (!track || totalSlides === 0) return;
+
+          function goToSlide(index) {
+            if (index < 0) index = totalSlides - 1;
+            if (index >= totalSlides) index = 0;
+            currentIndex = index;
+            track.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
+
+            dots.forEach(function (dot, i) {
+              dot.classList.toggle('active', i === currentIndex);
+              if (i === currentIndex) {
+                dot.style.width = window.innerWidth >= 768 ? '1.5rem' : '1rem';
+                dot.style.backgroundColor = 'var(--color-teal)';
+                dot.style.opacity = '1';
+              } else {
+                dot.style.width = window.innerWidth >= 768 ? '0.5rem' : '0.375rem';
+                dot.style.backgroundColor = 'var(--color-steel)';
+                dot.style.opacity = '0.5';
+              }
+            });
+
+            thumbs.forEach(function (thumb, i) {
+              if (i === currentIndex) {
+                thumb.style.borderColor = 'var(--color-teal)';
+                thumb.style.opacity = '1';
+                thumb.style.boxShadow = 'var(--shadow-card)';
+              } else {
+                thumb.style.borderColor = 'rgba(178,190,195,0.3)';
+                thumb.style.opacity = '0.6';
+                thumb.style.boxShadow = 'none';
+              }
+            });
+          }
+
+          if (prevBtn) {
+            prevBtn.addEventListener('click', function () {
+              goToSlide(currentIndex - 1);
+            });
+          }
+
+          if (nextBtn) {
+            nextBtn.addEventListener('click', function () {
+              goToSlide(currentIndex + 1);
+            });
+          }
+
+          dots.forEach(function (dot, i) {
+            dot.addEventListener('click', function () {
+              goToSlide(i);
+            });
+          });
+
+          thumbs.forEach(function (thumb, i) {
+            thumb.addEventListener('click', function () {
+              goToSlide(i);
+            });
+          });
+
+          /* Touch/swipe support */
+          var touchStartX = 0;
+          var touchEndX = 0;
+
+          track.addEventListener('touchstart', function (e) {
+            touchStartX = e.changedTouches[0].screenX;
+          }, { passive: true });
+
+          track.addEventListener('touchend', function (e) {
+            touchEndX = e.changedTouches[0].screenX;
+            var diff = touchStartX - touchEndX;
+            if (Math.abs(diff) > 50) {
+              if (diff > 0) goToSlide(currentIndex + 1);
+              else goToSlide(currentIndex - 1);
+            }
+          }, { passive: true });
+
+          goToSlide(0);
+        });
+
+        /* Accordion functionality */
+        document.querySelectorAll('[data-accordion-trigger]').forEach(function (trigger) {
+          trigger.addEventListener('click', function () {
+            var content = this.nextElementSibling;
+            var icon = this.querySelector('[data-accordion-icon]');
+            var isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+
+            if (isOpen) {
+              content.style.maxHeight = '0px';
+              content.style.opacity = '0';
+              if (icon) icon.style.transform = 'rotate(0deg)';
+            } else {
+              content.style.maxHeight = content.scrollHeight + 'px';
+              content.style.opacity = '1';
+              if (icon) icon.style.transform = 'rotate(180deg)';
+            }
+          });
+        });
+
+        /* Horizontal scroll carousel (reviews) */
+        document.querySelectorAll('[data-scroll-carousel]').forEach(function (carousel) {
+          var track = carousel.querySelector('[data-scroll-track]');
+          var prevBtn = carousel.querySelector('[data-scroll-prev]');
+          var nextBtn = carousel.querySelector('[data-scroll-next]');
+
+          if (!track) return;
+
+          var scrollAmount = 300;
+
+          if (prevBtn) {
+            prevBtn.addEventListener('click', function () {
+              track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            });
+          }
+
+          if (nextBtn) {
+            nextBtn.addEventListener('click', function () {
+              track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

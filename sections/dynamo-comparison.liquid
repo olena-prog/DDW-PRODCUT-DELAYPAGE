@@ -1,0 +1,321 @@
+{{ 'dynamo-comparison.css' | asset_url | stylesheet_tag }}
+
+<section class="dynamo-section section-white">
+  <div class="dynamo-container" style="max-width: 80rem;">
+    <!-- Section Header -->
+    <div class="dynamo-section-header">
+      <p class="dynamo-eyebrow" style="color: var(--color-teal);">{{ section.settings.eyebrow }}</p>
+      <h2 class="dynamo-heading dynamo-heading--xl">{{ section.settings.heading }}</h2>
+    </div>
+
+    <!-- VS Comparison Area -->
+    <div class="comparison-vs">
+      <div class="comparison-vs__item comparison-vs__item--dynamo">
+        {%- if section.settings.dynamo_image != blank -%}
+          <img
+            src="{{ section.settings.dynamo_image | image_url: width: 256 }}"
+            srcset="{{ section.settings.dynamo_image | image_url: width: 192 }} 192w, {{ section.settings.dynamo_image | image_url: width: 256 }} 256w"
+            sizes="(max-width: 767px) 6rem, 8rem"
+            alt="{{ section.settings.dynamo_image.alt | default: 'Dynamo Delay Wipes' | escape }}"
+            loading="lazy"
+            class="comparison-vs__img"
+          >
+        {%- else -%}
+          <div class="dynamo-image-placeholder comparison-vs__placeholder">
+            {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          </div>
+        {%- endif -%}
+        <span class="comparison-vs__label comparison-vs__label--dynamo">{{ section.settings.dynamo_label }}</span>
+      </div>
+
+      <div class="comparison-vs__badge">VS</div>
+
+      <div class="comparison-vs__item comparison-vs__item--others">
+        {%- if section.settings.others_image != blank -%}
+          <img
+            src="{{ section.settings.others_image | image_url: width: 256 }}"
+            srcset="{{ section.settings.others_image | image_url: width: 192 }} 192w, {{ section.settings.others_image | image_url: width: 256 }} 256w"
+            sizes="(max-width: 767px) 6rem, 8rem"
+            alt="{{ section.settings.others_image.alt | default: 'Other delay wipes' | escape }}"
+            loading="lazy"
+            class="comparison-vs__img"
+          >
+        {%- else -%}
+          <div class="dynamo-image-placeholder comparison-vs__placeholder">
+            {{ 'product-2' | placeholder_svg_tag: 'placeholder-svg' }}
+          </div>
+        {%- endif -%}
+        <span class="comparison-vs__label comparison-vs__label--others">{{ section.settings.others_label }}</span>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <div class="comparison-table">
+      <!-- Table Header -->
+      <div class="comparison-row comparison-row--header">
+        <div class="comparison-cell comparison-cell--feature">Feature</div>
+        <div class="comparison-cell comparison-cell--dynamo">{{ section.settings.dynamo_label }}</div>
+        <div class="comparison-cell comparison-cell--others">{{ section.settings.others_label }}</div>
+      </div>
+
+      <!-- Table Body -->
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'comparison_row' -%}
+          <div class="comparison-row" {{ block.shopify_attributes }}>
+            <div class="comparison-cell comparison-cell--feature">
+              {{ block.settings.feature_name }}
+            </div>
+            <div class="comparison-cell comparison-cell--dynamo">
+              {%- if block.settings.dynamo_is_check -%}
+                <svg class="comparison-check comparison-check--yes" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              {%- else -%}
+                <span class="comparison-value">{{ block.settings.dynamo_value }}</span>
+              {%- endif -%}
+            </div>
+            <div class="comparison-cell comparison-cell--others">
+              {%- if block.settings.others_is_check -%}
+                <svg class="comparison-check comparison-check--yes" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              {%- else -%}
+                <span class="comparison-value comparison-value--others">{{ block.settings.others_value }}</span>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    <!-- Why Dynamo Wins -->
+    <div class="comparison-wins">
+      <h3 class="comparison-wins__heading">{{ section.settings.wins_heading }}</h3>
+      <div class="comparison-wins__grid">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'win_point' -%}
+            <div class="comparison-wins__item" {{ block.shopify_attributes }}>
+              <svg class="comparison-wins__check" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              <span>{{ block.settings.text }}</span>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Comparison",
+  "tag": "section",
+  "class": "shopify-section--comparison",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "Comparison"
+    },
+    {
+      "type": "html",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Not Your Average <span style='color: var(--color-orange);'>Delay Wipe</span>"
+    },
+    {
+      "type": "header",
+      "content": "VS Comparison Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "dynamo_image",
+      "label": "Dynamo Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "others_image",
+      "label": "Others Image"
+    },
+    {
+      "type": "text",
+      "id": "dynamo_label",
+      "label": "Dynamo Label",
+      "default": "Dynamo"
+    },
+    {
+      "type": "text",
+      "id": "others_label",
+      "label": "Others Label",
+      "default": "Others"
+    },
+    {
+      "type": "header",
+      "content": "Why Dynamo Wins"
+    },
+    {
+      "type": "text",
+      "id": "wins_heading",
+      "label": "Wins Section Heading",
+      "default": "Why Dynamo Wins"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "comparison_row",
+      "name": "Comparison Row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "feature_name",
+          "label": "Feature Name",
+          "default": "Feature"
+        },
+        {
+          "type": "text",
+          "id": "dynamo_value",
+          "label": "Dynamo Value",
+          "default": "Yes"
+        },
+        {
+          "type": "text",
+          "id": "others_value",
+          "label": "Others Value",
+          "default": "No"
+        },
+        {
+          "type": "checkbox",
+          "id": "dynamo_is_check",
+          "label": "Show checkmark for Dynamo",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "others_is_check",
+          "label": "Show checkmark for Others",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "win_point",
+      "name": "Win Point",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Win Point Text",
+          "default": "Clinically proven ingredients"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Comparison",
+      "blocks": [
+        {
+          "type": "comparison_row",
+          "settings": {
+            "feature_name": "Active Ingredient",
+            "dynamo_value": "4% Benzocaine",
+            "others_value": "Lidocaine / unknown",
+            "dynamo_is_check": false,
+            "others_is_check": false
+          }
+        },
+        {
+          "type": "comparison_row",
+          "settings": {
+            "feature_name": "Wipes Per Pack",
+            "dynamo_value": "10 wipes",
+            "others_value": "4\u20136 wipes",
+            "dynamo_is_check": false,
+            "others_is_check": false
+          }
+        },
+        {
+          "type": "comparison_row",
+          "settings": {
+            "feature_name": "Price Per Wipe",
+            "dynamo_value": "~$1.50",
+            "others_value": "~$3.00+",
+            "dynamo_is_check": false,
+            "others_is_check": false
+          }
+        },
+        {
+          "type": "comparison_row",
+          "settings": {
+            "feature_name": "Individually Wrapped",
+            "dynamo_value": "",
+            "others_value": "Varies",
+            "dynamo_is_check": true,
+            "others_is_check": false
+          }
+        },
+        {
+          "type": "comparison_row",
+          "settings": {
+            "feature_name": "Fast Drying",
+            "dynamo_value": "",
+            "others_value": "Often sticky",
+            "dynamo_is_check": true,
+            "others_is_check": false
+          }
+        },
+        {
+          "type": "comparison_row",
+          "settings": {
+            "feature_name": "Wallet-Friendly",
+            "dynamo_value": "",
+            "others_value": "Premium pricing",
+            "dynamo_is_check": true,
+            "others_is_check": false
+          }
+        },
+        {
+          "type": "comparison_row",
+          "settings": {
+            "feature_name": "No Prescription",
+            "dynamo_value": "",
+            "others_value": "",
+            "dynamo_is_check": true,
+            "others_is_check": true
+          }
+        },
+        {
+          "type": "comparison_row",
+          "settings": {
+            "feature_name": "Made in USA",
+            "dynamo_value": "",
+            "others_value": "Varies",
+            "dynamo_is_check": true,
+            "others_is_check": false
+          }
+        },
+        {
+          "type": "win_point",
+          "settings": {
+            "text": "More wipes per pack at a lower cost per use"
+          }
+        },
+        {
+          "type": "win_point",
+          "settings": {
+            "text": "Clinically proven 4% Benzocaine formula"
+          }
+        },
+        {
+          "type": "win_point",
+          "settings": {
+            "text": "Individually wrapped for on-the-go convenience"
+          }
+        },
+        {
+          "type": "win_point",
+          "settings": {
+            "text": "Fast-drying, no sticky residue, made in the USA"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,184 @@
+{
+  "sections": {
+    "product-hero": {
+      "type": "dynamo-product-hero",
+      "settings": {
+        "product_title": "Dynamo Delay Wipes",
+        "product_subtitle": "Endurance & Desensitizing Wipes for Men (4% Benzocaine)",
+        "rating_score": "5.0 / 5.0",
+        "rating_label": "Excellent",
+        "review_count": "8",
+        "variant_heading": "Choose Your Count:",
+        "button_text": "ADD TO CART — $11.99",
+        "stock_text": "In Stock — Ready to Ship",
+        "trust_1": "Free Ship $35+",
+        "trust_2": "Discreet",
+        "trust_3": "Secure"
+      },
+      "blocks": {
+        "gallery-1": { "type": "gallery_image", "settings": { "alt_text": "Product packet" } },
+        "gallery-2": { "type": "gallery_image", "settings": { "alt_text": "6 count package" } },
+        "gallery-3": { "type": "gallery_image", "settings": { "alt_text": "18 count package" } },
+        "gallery-4": { "type": "gallery_image", "settings": { "alt_text": "36 count package" } },
+        "gallery-5": { "type": "gallery_image", "settings": { "alt_text": "Product info 1" } },
+        "gallery-6": { "type": "gallery_image", "settings": { "alt_text": "Product info 2" } },
+        "gallery-7": { "type": "gallery_image", "settings": { "alt_text": "Product info 3" } },
+        "badge-1": { "type": "feature_badge", "settings": { "text": "Works in 5 Min" } },
+        "badge-2": { "type": "feature_badge", "settings": { "text": "Pocket-Sized" } },
+        "badge-3": { "type": "feature_badge", "settings": { "text": "Made in USA" } },
+        "badge-4": { "type": "feature_badge", "settings": { "text": "Clinically Proven" } },
+        "check-1": { "type": "feature_check", "settings": { "text": "Clinically Proven Formula" } },
+        "check-2": { "type": "feature_check", "settings": { "text": "Works in 5-10 Minutes" } },
+        "check-3": { "type": "feature_check", "settings": { "text": "Ultra-Discreet Packaging" } },
+        "check-4": { "type": "feature_check", "settings": { "text": "No Mess, No Spray" } },
+        "variant-1": { "type": "variant_option", "settings": { "price": "$11.99", "count_label": "6 Count", "per_unit_price": "$2.00/wipe" } },
+        "variant-2": { "type": "variant_option", "settings": { "price": "$29.99", "count_label": "18 Count", "per_unit_price": "$1.67/wipe", "badge_text": "MOST POPULAR - Save 17%" } },
+        "variant-3": { "type": "variant_option", "settings": { "price": "$49.99", "count_label": "36 Count", "per_unit_price": "$1.39/wipe", "badge_text": "BEST VALUE - Save 31%" } }
+      },
+      "block_order": ["gallery-1", "gallery-2", "gallery-3", "gallery-4", "gallery-5", "gallery-6", "gallery-7", "badge-1", "badge-2", "badge-3", "badge-4", "check-1", "check-2", "check-3", "check-4", "variant-1", "variant-2", "variant-3"]
+    },
+    "how-to-use": {
+      "type": "dynamo-how-to-use",
+      "settings": {
+        "eyebrow": "How to Use",
+        "heading": "Ready in <span style='color: var(--color-orange);'>4 Simple</span> Steps",
+        "pro_tip_label": "Pro Tip",
+        "pro_tip_text": "One wipe is all you need. The targeted application puts the formula exactly where it counts — no guessing, no waste."
+      },
+      "blocks": {
+        "step-1": { "type": "step", "settings": { "step_number": "01", "title": "OPEN", "description": "Tear open the foil packet and remove the wipe.", "icon": "package" } },
+        "step-2": { "type": "step", "settings": { "step_number": "02", "title": "APPLY", "description": "Gently wipe the head and shaft — exactly where you need control.", "icon": "hand" } },
+        "step-3": { "type": "step", "settings": { "step_number": "03", "title": "WAIT", "description": "Give it 5 minutes to dry and absorb. Fast-drying formula means no sticky mess.", "icon": "clock" } },
+        "step-4": { "type": "step", "settings": { "step_number": "04", "title": "ENJOY", "description": "You're ready. Wash off after intimacy.", "icon": "heart" } }
+      },
+      "block_order": ["step-1", "step-2", "step-3", "step-4"]
+    },
+    "how-it-works": {
+      "type": "dynamo-how-it-works",
+      "settings": {
+        "eyebrow": "How It Works",
+        "heading": "The Science Behind <span style='color: var(--color-teal);'>the Confidence</span>",
+        "description": "Dynamo Delay Wipes use <strong>4% Benzocaine</strong>, a clinically proven topical anesthetic that temporarily reduces sensitivity where applied.",
+        "flow_1": "Less sensitivity",
+        "flow_2": "More control",
+        "flow_3": "Longer-lasting intimacy",
+        "steps_heading": "Here's what happens:",
+        "info_heading": "Why Benzocaine?",
+        "info_description": "Benzocaine is trusted, FDA-recognized, and used in thousands of over-the-counter products. It works only where you apply it — no pills, no systemic side effects, no prescription needed."
+      },
+      "blocks": {
+        "proc-1": { "type": "process_step", "settings": { "title": "You apply", "description": "Benzocaine absorbs into the skin within 5 minutes", "icon": "droplets" } },
+        "proc-2": { "type": "process_step", "settings": { "title": "Nerves calm down", "description": "The formula temporarily blocks oversensitive nerve signals", "icon": "brain" } },
+        "proc-3": { "type": "process_step", "settings": { "title": "You stay in control", "description": "Ejaculation is delayed without losing pleasure", "icon": "shield" } },
+        "proc-4": { "type": "process_step", "settings": { "title": "It wears off naturally", "description": "Effects last 30–60 minutes, then fade on their own", "icon": "timer" } },
+        "info-1": { "type": "info_badge", "settings": { "text": "FDA-Recognized", "icon": "badge-check" } },
+        "info-2": { "type": "info_badge", "settings": { "text": "No Pills Needed", "icon": "pill" } },
+        "info-3": { "type": "info_badge", "settings": { "text": "No Side Effects", "icon": "shield" } },
+        "info-4": { "type": "info_badge", "settings": { "text": "Wears Off Naturally", "icon": "timer" } }
+      },
+      "block_order": ["proc-1", "proc-2", "proc-3", "proc-4", "info-1", "info-2", "info-3", "info-4"]
+    },
+    "benefits": {
+      "type": "dynamo-benefits",
+      "settings": {}
+    },
+    "comparison": {
+      "type": "dynamo-comparison",
+      "settings": {}
+    },
+    "the-problem": {
+      "type": "dynamo-the-problem",
+      "settings": {}
+    },
+    "better-for-both": {
+      "type": "dynamo-better-for-both",
+      "settings": {}
+    },
+    "reviews": {
+      "type": "dynamo-reviews",
+      "settings": {
+        "eyebrow": "Reviews",
+        "heading": "Real Results",
+        "rating_score": "5.0",
+        "review_count": "8",
+        "written_heading": "Written Reviews"
+      },
+      "blocks": {
+        "vid-1": { "type": "video_review", "settings": { "quote": "These wipes really made a difference for us.", "reviewer_name": "Mike & Sarah" } },
+        "vid-2": { "type": "video_review", "settings": { "quote": "Honestly, I was surprised how well they worked.", "reviewer_name": "James" } },
+        "vid-3": { "type": "video_review", "settings": { "quote": "Works in minutes. More confident and relaxed.", "reviewer_name": "David" } },
+        "vid-4": { "type": "video_review", "settings": { "quote": "No weird smell or numbness — just better.", "reviewer_name": "Alex & Jen" } },
+        "wr-1": { "type": "written_review", "settings": { "reviewer_name": "Matt", "date": "Jan 2026", "review_text": "Doesn't make a mess or smell weird. Just does the job." } },
+        "wr-2": { "type": "written_review", "settings": { "reviewer_name": "Sophie D.", "date": "Jan 2026", "review_text": "We noticed a difference right away. Simple but effective." } },
+        "wr-3": { "type": "written_review", "settings": { "reviewer_name": "Ben", "date": "Dec 2025", "review_text": "Bought these for a weekend trip. Super easy to pack and use." } },
+        "wr-4": { "type": "written_review", "settings": { "reviewer_name": "Jenna", "date": "Dec 2025", "review_text": "Got them for my partner. He says they help a lot." } },
+        "wr-5": { "type": "written_review", "settings": { "reviewer_name": "Jayson", "date": "Nov 2025", "review_text": "Great on the go. Worked as expected." } },
+        "wr-6": { "type": "written_review", "settings": { "reviewer_name": "G.", "date": "Oct 2025", "review_text": "Worked great! Super convenient and easy to use. Will be buying more." } }
+      },
+      "block_order": ["vid-1", "vid-2", "vid-3", "vid-4", "wr-1", "wr-2", "wr-3", "wr-4", "wr-5", "wr-6"]
+    },
+    "faq": {
+      "type": "dynamo-faq",
+      "settings": {
+        "eyebrow": "FAQ",
+        "heading": "Frequently Asked Questions"
+      },
+      "blocks": {
+        "faq-1": { "type": "faq_item", "settings": { "question": "How do Dynamo Delay Wipes work?", "answer": "<p>Dynamo Delay Wipes contain 4% Benzocaine, a topical anesthetic that temporarily reduces sensitivity. Simply apply 5-10 minutes before intimacy.</p>" } },
+        "faq-2": { "type": "faq_item", "settings": { "question": "How many wipes should I use at a time?", "answer": "<p>Just one wipe per use is all you need.</p>" } },
+        "faq-3": { "type": "faq_item", "settings": { "question": "How long does it take to start working?", "answer": "<p>The wipes begin working within 5-10 minutes of application.</p>" } },
+        "faq-4": { "type": "faq_item", "settings": { "question": "Are they safe for oral contact?", "answer": "<p>Wash the area thoroughly after the formula has absorbed and before any oral contact.</p>" } },
+        "faq-5": { "type": "faq_item", "settings": { "question": "Can I use them with condoms?", "answer": "<p>Yes! Compatible with latex condoms. Apply first, let dry, then use a condom.</p>" } },
+        "faq-6": { "type": "faq_item", "settings": { "question": "Are there any side effects?", "answer": "<p>Benzocaine is FDA-recognized. Some users may experience mild temporary numbness. Discontinue if irritation occurs.</p>" } },
+        "faq-7": { "type": "faq_item", "settings": { "question": "How long do the effects last?", "answer": "<p>Effects typically last 30-60 minutes and fade naturally.</p>" } },
+        "faq-8": { "type": "faq_item", "settings": { "question": "Wipes vs spray — what's the difference?", "answer": "<p>Wipes offer more targeted, mess-free application with individual wrapping for discretion.</p>" } },
+        "faq-9": { "type": "faq_item", "settings": { "question": "Is there a money-back guarantee?", "answer": "<p>Yes! 30-day money-back guarantee. Full refund, no questions asked.</p>" } },
+        "faq-10": { "type": "faq_item", "settings": { "question": "How should I store them?", "answer": "<p>Store in a cool, dry place. Foil packets keep each wipe fresh.</p>" } },
+        "faq-11": { "type": "faq_item", "settings": { "question": "Will my order arrive discreetly?", "answer": "<p>All orders ship in plain, unmarked packaging.</p>" } }
+      },
+      "block_order": ["faq-1", "faq-2", "faq-3", "faq-4", "faq-5", "faq-6", "faq-7", "faq-8", "faq-9", "faq-10", "faq-11"]
+    },
+    "try-risk-free": {
+      "type": "dynamo-try-risk-free",
+      "settings": {
+        "heading": "Try Risk-Free",
+        "description": "30-Day Money-Back Guarantee. Not satisfied? Full refund — no questions asked.",
+        "button_text": "Shop Now — Risk Free"
+      },
+      "blocks": {
+        "trust-1": { "type": "trust_badge", "settings": { "text": "Clinically Proven", "icon": "award" } },
+        "trust-2": { "type": "trust_badge", "settings": { "text": "Discreet Shipping", "icon": "truck" } },
+        "trust-3": { "type": "trust_badge", "settings": { "text": "Secure Payment", "icon": "lock" } },
+        "trust-4": { "type": "trust_badge", "settings": { "text": "Made in USA", "icon": "shield" } }
+      },
+      "block_order": ["trust-1", "trust-2", "trust-3", "trust-4"]
+    },
+    "you-may-also-like": {
+      "type": "dynamo-you-may-also-like",
+      "settings": {
+        "eyebrow": "Complete Your Kit",
+        "heading": "You May Also Like"
+      },
+      "blocks": {
+        "prod-1": { "type": "product_card", "settings": { "title": "Dynamo Delay Spray", "subtitle": "13% Lidocaine — Maximum strength", "price": "From $18.99" } },
+        "prod-2": { "type": "product_card", "settings": { "title": "Delay Wipes 18ct", "subtitle": "Save 17%", "price": "$29.99" } },
+        "prod-3": { "type": "product_card", "settings": { "title": "Delay Wipes 36ct", "subtitle": "Best Value · Save 31%", "price": "$49.99" } },
+        "prod-4": { "type": "product_card", "settings": { "title": "Date Night Kit", "subtitle": "Complete couples kit", "price": "$34.99" } }
+      },
+      "block_order": ["prod-1", "prod-2", "prod-3", "prod-4"]
+    }
+  },
+  "order": [
+    "product-hero",
+    "how-to-use",
+    "how-it-works",
+    "benefits",
+    "comparison",
+    "the-problem",
+    "better-for-both",
+    "reviews",
+    "faq",
+    "try-risk-free",
+    "you-may-also-like"
+  ]
+}
