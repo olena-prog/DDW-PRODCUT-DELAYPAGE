@@ -61,6 +61,8 @@
             sizes="(max-width: 1024px) 100vw, 40vw"
             alt="{{ section.settings.info_image.alt | default: 'Product image' | escape }}"
             loading="lazy"
+            width="{{ section.settings.info_image.width }}"
+            height="{{ section.settings.info_image.height }}"
             class="hiw-info__image"
           >
         {%- else -%}

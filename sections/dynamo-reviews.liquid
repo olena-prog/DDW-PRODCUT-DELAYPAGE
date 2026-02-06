@@ -32,6 +32,8 @@
                       src="{{ block.settings.image | image_url: width: 400 }}"
                       alt="{{ block.settings.reviewer_name | escape }}"
                       loading="lazy"
+                      width="{{ block.settings.image.width }}"
+                      height="{{ block.settings.image.height }}"
                       class="reviews-video__video"
                     >
                   {%- else -%}

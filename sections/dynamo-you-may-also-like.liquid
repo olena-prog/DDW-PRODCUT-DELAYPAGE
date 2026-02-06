@@ -19,6 +19,8 @@
                   sizes="(max-width: 768px) 50vw, 25vw"
                   alt="{{ block.settings.title | escape }}"
                   loading="lazy"
+                  width="{{ block.settings.image.width }}"
+                  height="{{ block.settings.image.height }}"
                   class="ymal-card__img"
                 >
               {%- else -%}
