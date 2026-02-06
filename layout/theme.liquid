@@ -21,7 +21,96 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    {{ 'dynamo-base.css' | asset_url | stylesheet_tag }}
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+      :root {
+        --color-teal: #0D7377;
+        --color-teal-light: #0f8a8e;
+        --color-teal-dark: #0a5c5f;
+        --color-mint: #4ECDC4;
+        --color-mint-light: #7eddd6;
+        --color-orange: #FF6B35;
+        --color-orange-light: #ff8a5c;
+        --color-charcoal: #2D3436;
+        --color-steel: #B2BEC3;
+        --color-cream: #FDFBF7;
+        --color-white: #FFFFFF;
+        --color-foreground: #1a1a1a;
+        --bg-cream: #FDFBF7;
+        --bg-white: #FFFFFF;
+        --bg-steel: #f0f2f3;
+        --bg-teal: var(--color-teal);
+        --font-heading: 'Poppins', sans-serif;
+        --font-body: 'Poppins', sans-serif;
+        --shadow-card: 0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.05);
+        --shadow-card-hover: 0 4px 12px rgba(0,0,0,0.12), 0 8px 24px rgba(0,0,0,0.08);
+        --shadow-elevated: 0 8px 30px rgba(0,0,0,0.12);
+        --radius-sm: 0.5rem;
+        --radius-md: 0.75rem;
+        --radius-lg: 1rem;
+        --radius-xl: 1.5rem;
+        --radius-full: 9999px;
+        --section-padding-mobile: 3rem 0;
+        --section-padding-desktop: 4rem 0;
+        --container-max: 80rem;
+        --container-padding: 1rem;
+        --container-padding-md: 2rem;
+      }
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+      body { font-family: var(--font-body); color: var(--color-charcoal); line-height: 1.6; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; overflow-x: hidden; }
+      img { max-width: 100%; height: auto; display: block; }
+      button { cursor: pointer; font-family: inherit; }
+      a { text-decoration: none; color: inherit; }
+      .dynamo-container { width: 100%; max-width: var(--container-max); margin: 0 auto; padding: 0 var(--container-padding); }
+      @media (min-width: 768px) { .dynamo-container { padding: 0 var(--container-padding-md); } }
+      .section-cream { background-color: var(--bg-cream); }
+      .section-white { background-color: var(--bg-white); }
+      .section-steel { background-color: var(--bg-steel); }
+      .section-teal { background-color: var(--bg-teal); }
+      .dynamo-heading { font-family: var(--font-heading); font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; color: var(--color-foreground); }
+      .dynamo-heading--xl { font-size: 1.875rem; }
+      @media (min-width: 768px) { .dynamo-heading--xl { font-size: 3rem; } }
+      .dynamo-heading--lg { font-size: 1.5rem; }
+      @media (min-width: 768px) { .dynamo-heading--lg { font-size: 2rem; } }
+      .dynamo-eyebrow { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.75rem; }
+      .dynamo-body { font-size: 0.875rem; line-height: 1.7; color: rgba(45,52,54,0.7); }
+      @media (min-width: 768px) { .dynamo-body { font-size: 1rem; } }
+      .dynamo-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; font-family: var(--font-heading); font-weight: 700; border: none; border-radius: var(--radius-lg); cursor: pointer; transition: all 0.3s ease; white-space: nowrap; text-decoration: none; line-height: 1; }
+      .dynamo-btn--primary { background-color: var(--color-orange); color: var(--color-white); padding: 0.875rem 1.5rem; font-size: 0.875rem; box-shadow: var(--shadow-card); }
+      .dynamo-btn--primary:hover { background-color: var(--color-orange-light); box-shadow: var(--shadow-card-hover); transform: scale(1.01); }
+      @media (min-width: 768px) { .dynamo-btn--primary { padding: 1rem 2rem; font-size: 1rem; } }
+      .dynamo-btn--small { font-size: 0.6875rem; padding: 0.375rem 0.5rem; border-radius: var(--radius-sm); }
+      @media (min-width: 768px) { .dynamo-btn--small { font-size: 0.75rem; padding: 0.5rem 0.75rem; border-radius: var(--radius-md); } }
+      .dynamo-card { border-radius: var(--radius-lg); box-shadow: var(--shadow-card); transition: all 0.4s ease; overflow: hidden; }
+      .dynamo-card:hover { box-shadow: var(--shadow-card-hover); }
+      .dynamo-badge { display: inline-flex; align-items: center; gap: 0.25rem; padding: 0.25rem 0.5rem; border-radius: var(--radius-full); font-size: 0.5625rem; font-weight: 500; }
+      @media (min-width: 768px) { .dynamo-badge { padding: 0.5rem 0.75rem; font-size: 0.75rem; } }
+      .dynamo-check { width: 1rem; height: 1rem; border-radius: 50%; background-color: rgba(78,205,196,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+      @media (min-width: 768px) { .dynamo-check { width: 1.25rem; height: 1.25rem; } }
+      .dynamo-check svg { width: 0.625rem; height: 0.625rem; color: var(--color-mint); }
+      @media (min-width: 768px) { .dynamo-check svg { width: 0.75rem; height: 0.75rem; } }
+      .dynamo-stars { display: flex; gap: 0.125rem; }
+      .dynamo-stars svg { width: 1rem; height: 1rem; fill: var(--color-orange); color: var(--color-orange); }
+      .dynamo-stars--small svg { width: 0.75rem; height: 0.75rem; }
+      .dynamo-grid { display: grid; gap: 1rem; }
+      @media (min-width: 640px) { .dynamo-grid--2 { grid-template-columns: repeat(2, 1fr); } }
+      @media (min-width: 768px) { .dynamo-grid--3 { grid-template-columns: repeat(3, 1fr); } .dynamo-grid { gap: 1.5rem; } }
+      @media (min-width: 1024px) { .dynamo-grid--4 { grid-template-columns: repeat(4, 1fr); } }
+      .dynamo-section { padding: 3rem 0; overflow-x: hidden; }
+      @media (min-width: 768px) { .dynamo-section { padding: 4rem 0; } }
+      .dynamo-text-center { text-align: center; }
+      .dynamo-section-header { text-align: center; margin-bottom: 2rem; }
+      .dynamo-divider { height: 1px; background-color: rgba(178,190,195,0.3); border: none; }
+      .dynamo-icon { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+      .shopify-section { overflow-x: hidden; }
+      .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border-width: 0; }
+      @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+      .animate-pulse { animation: pulse 2s cubic-bezier(0.4,0,0.6,1) infinite; }
+      .dynamo-image-placeholder { display: flex; align-items: center; justify-content: center; background-color: rgba(178,190,195,0.15); border: 2px dashed rgba(178,190,195,0.4); border-radius: var(--radius-lg); min-height: 200px; color: rgba(45,52,54,0.4); font-family: var(--font-heading); font-size: 0.875rem; }
+      .dynamo-image-wrapper { position: relative; overflow: hidden; border-radius: var(--radius-lg); }
+      .dynamo-image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+    </style>
 
     {{ content_for_header }}
 

@@ -1,4 +1,43 @@
-{{ 'dynamo-comparison.css' | asset_url | stylesheet_tag }}
+<style>
+.comparison-vs { display: flex; align-items: center; justify-content: center; gap: 1.5rem; margin-bottom: 1.5rem; }
+@media (min-width: 768px) { .comparison-vs { gap: 2rem; } }
+.comparison-vs__item { display: flex; flex-direction: column; align-items: center; gap: 0.75rem; }
+.comparison-vs__item--dynamo .comparison-vs__img, .comparison-vs__item--dynamo .comparison-vs__placeholder { width: 6rem; height: 6rem; border-radius: var(--radius-xl); overflow: hidden; border: 2px solid var(--color-mint); box-shadow: var(--shadow-card); object-fit: cover; }
+@media (min-width: 768px) { .comparison-vs__item--dynamo .comparison-vs__img, .comparison-vs__item--dynamo .comparison-vs__placeholder { width: 8rem; height: 8rem; } }
+.comparison-vs__item--others .comparison-vs__img, .comparison-vs__item--others .comparison-vs__placeholder { width: 6rem; height: 6rem; border-radius: var(--radius-xl); overflow: hidden; border: 2px solid rgba(178,190,195,0.3); opacity: 0.6; object-fit: cover; }
+@media (min-width: 768px) { .comparison-vs__item--others .comparison-vs__img, .comparison-vs__item--others .comparison-vs__placeholder { width: 8rem; height: 8rem; } }
+.comparison-vs__placeholder { display: flex; align-items: center; justify-content: center; background-color: rgba(178,190,195,0.15); }
+.comparison-vs__label { font-family: var(--font-heading); font-size: 0.8125rem; font-weight: 600; }
+@media (min-width: 768px) { .comparison-vs__label { font-size: 0.9375rem; } }
+.comparison-vs__label--dynamo { color: var(--color-teal); }
+.comparison-vs__label--others { color: var(--color-steel); }
+.comparison-vs__badge { font-family: var(--font-heading); font-size: 0.875rem; font-weight: 800; color: var(--color-charcoal); background: var(--bg-cream); border: 2px solid rgba(178,190,195,0.3); width: 2.5rem; height: 2.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+@media (min-width: 768px) { .comparison-vs__badge { font-size: 1rem; width: 3rem; height: 3rem; } }
+.comparison-table { border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-card); border: 1px solid rgba(178,190,195,0.25); }
+.comparison-row--header { display: grid; grid-template-columns: 1fr 1fr 1fr; background-color: var(--color-teal); }
+.comparison-row--header .comparison-cell { padding: 0.75rem 1rem; font-family: var(--font-heading); font-size: 0.6875rem; font-weight: 700; color: var(--color-white); text-transform: uppercase; letter-spacing: 0.05em; border-top: none; }
+@media (min-width: 768px) { .comparison-row--header .comparison-cell { padding: 1rem 1.5rem; font-size: 0.8125rem; } }
+.comparison-row { display: grid; grid-template-columns: 1fr 1fr 1fr; border-top: 1px solid rgba(178,190,195,0.2); }
+.comparison-row:nth-child(even) { background-color: var(--bg-cream); }
+.comparison-row:nth-child(odd):not(.comparison-row--header) { background-color: var(--color-white); }
+.comparison-cell { padding: 0.75rem 1rem; font-size: 0.75rem; line-height: 1.5; display: flex; align-items: center; word-break: break-word; min-width: 0; }
+@media (min-width: 768px) { .comparison-cell { padding: 1rem 1.5rem; font-size: 0.875rem; } }
+.comparison-cell--feature { font-weight: 600; color: var(--color-charcoal); }
+.comparison-cell--dynamo { color: var(--color-teal); font-weight: 500; }
+.comparison-cell--others { color: rgba(45,52,54,0.55); }
+.comparison-check { width: 1.25rem; height: 1.25rem; flex-shrink: 0; }
+.comparison-check--yes { color: var(--color-mint); }
+.comparison-value { display: inline-block; }
+.comparison-value--others { opacity: 0.8; }
+.comparison-wins { margin-top: 2rem; background-color: var(--color-teal); border-radius: var(--radius-xl); padding: 1.5rem; }
+@media (min-width: 768px) { .comparison-wins { padding: 2rem; } }
+.comparison-wins__heading { font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: var(--color-white); margin-bottom: 1.25rem; text-align: center; }
+@media (min-width: 768px) { .comparison-wins__heading { font-size: 1.5rem; margin-bottom: 1.5rem; } }
+.comparison-wins__grid { display: grid; grid-template-columns: 1fr; gap: 0.75rem; }
+@media (min-width: 640px) { .comparison-wins__grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; } }
+.comparison-wins__item { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.875rem; color: rgba(255,255,255,0.8); line-height: 1.5; }
+.comparison-wins__check { width: 1.25rem; height: 1.25rem; color: var(--color-mint); flex-shrink: 0; margin-top: 0.0625rem; }
+</style>
 
 <section class="dynamo-section section-white">
   <div class="dynamo-container" style="max-width: 80rem;">

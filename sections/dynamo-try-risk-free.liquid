@@ -1,4 +1,20 @@
-{{ 'dynamo-try-risk-free.css' | asset_url | stylesheet_tag }}
+<style>
+.risk-free__icon { width: 4rem; height: 4rem; border-radius: 50%; background: var(--color-teal); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; }
+.risk-free__desc { font-size: 1rem; color: rgba(45,52,54,0.7); line-height: 1.6; max-width: 28rem; margin: 0.75rem auto 1.25rem; }
+@media (min-width: 768px) { .risk-free__desc { font-size: 1.125rem; margin-bottom: 1.5rem; } }
+.risk-free__btn-wrap { display: inline-block; margin-bottom: 1.5rem; }
+@media (min-width: 768px) { .risk-free__btn-wrap { margin-bottom: 2rem; } }
+.risk-free__btn { padding: 0.875rem 1.5rem; font-size: 1rem; }
+@media (min-width: 768px) { .risk-free__btn { padding: 1rem 2.5rem; font-size: 1.125rem; } }
+.risk-free__trust { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; max-width: 32rem; margin: 0 auto; }
+@media (min-width: 768px) { .risk-free__trust { gap: 1rem; } }
+.risk-free__trust-item { text-align: center; }
+.risk-free__trust-icon { width: 2.5rem; height: 2.5rem; border-radius: var(--radius-lg); background: var(--color-teal); display: flex; align-items: center; justify-content: center; margin: 0 auto 0.375rem; transition: transform 0.3s ease; }
+@media (min-width: 768px) { .risk-free__trust-icon { width: 3rem; height: 3rem; margin-bottom: 0.5rem; } }
+.risk-free__trust-item:hover .risk-free__trust-icon { transform: scale(1.05); }
+.risk-free__trust-label { font-size: 0.5625rem; font-weight: 500; color: rgba(45,52,54,0.7); }
+@media (min-width: 768px) { .risk-free__trust-label { font-size: 0.625rem; } }
+</style>
 
 <section class="dynamo-section section-cream">
   <div class="dynamo-container" style="max-width: 48rem;">

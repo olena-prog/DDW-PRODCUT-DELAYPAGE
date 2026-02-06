@@ -1,4 +1,43 @@
-{{ 'dynamo-reviews.css' | asset_url | stylesheet_tag }}
+<style>
+.reviews-rating { display: flex; align-items: center; justify-content: center; gap: 0.75rem; margin-top: 1rem; }
+.reviews-rating__score { font-family: var(--font-heading); font-size: 1.125rem; font-weight: 700; color: var(--color-white); }
+.reviews-rating__count { font-size: 0.875rem; color: var(--color-steel); }
+.reviews-video { position: relative; margin-bottom: 2rem; }
+.reviews-video__track { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 0.5rem; }
+.reviews-video__track::-webkit-scrollbar { display: none; }
+.reviews-video__slide { flex: 0 0 75%; scroll-snap-align: start; }
+@media (min-width: 640px) { .reviews-video__slide { flex: 0 0 50%; } }
+@media (min-width: 768px) { .reviews-video__slide { flex: 0 0 35%; } }
+@media (min-width: 1024px) { .reviews-video__slide { flex: 0 0 25%; } }
+.reviews-video__card { border-radius: var(--radius-xl); overflow: hidden; }
+.reviews-video__media { position: relative; width: 100%; }
+.reviews-video__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.reviews-video__overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent, transparent); }
+.reviews-video__content { position: absolute; bottom: 0; left: 0; right: 0; padding: 1rem; }
+.reviews-video__quote { color: rgba(255,255,255,0.9); font-size: 0.75rem; line-height: 1.5; margin: 0.5rem 0; }
+.reviews-video__author { display: flex; align-items: center; gap: 0.5rem; }
+.reviews-video__author span { color: var(--color-white); font-weight: 600; font-size: 0.75rem; }
+.reviews-video__nav { display: none; position: absolute; top: 50%; transform: translateY(-50%); width: 2rem; height: 2rem; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); color: var(--color-white); align-items: center; justify-content: center; transition: all 0.3s ease; cursor: pointer; }
+.reviews-video__nav:hover { background: var(--color-white); color: var(--color-teal); }
+@media (min-width: 768px) { .reviews-video__nav { display: flex; } }
+.reviews-video__nav--prev { left: -1rem; }
+.reviews-video__nav--next { right: -1rem; }
+.reviews-video__swipe-hint { text-align: center; font-size: 0.75rem; color: rgba(178,190,195,0.5); margin-top: 1rem; }
+@media (min-width: 768px) { .reviews-video__swipe-hint { display: none; } }
+.reviews-written__title { font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: var(--color-white); text-align: center; margin-bottom: 1.5rem; }
+.reviews-written__grid { display: grid; gap: 1rem; }
+@media (min-width: 768px) { .reviews-written__grid { grid-template-columns: repeat(3, 1fr); } }
+.reviews-written__card { background: rgba(255,255,255,0.08); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-radius: var(--radius-lg); padding: 1.25rem; border: 1px solid rgba(255,255,255,0.1); transition: background 0.3s ease; }
+.reviews-written__card:hover { background: rgba(255,255,255,0.12); }
+.reviews-written__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; }
+.reviews-written__author-info { display: flex; align-items: center; gap: 0.5rem; }
+.reviews-written__avatar { width: 2rem; height: 2rem; border-radius: 50%; background: rgba(78,205,196,0.2); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-weight: 700; font-size: 0.875rem; color: var(--color-mint); }
+.reviews-written__name { font-weight: 600; font-size: 0.875rem; color: var(--color-white); display: block; }
+.reviews-written__verified { display: flex; align-items: center; gap: 0.25rem; }
+.reviews-written__verified span { font-size: 0.625rem; color: rgba(178,190,195,0.6); }
+.reviews-written__date { font-size: 0.625rem; color: rgba(178,190,195,0.4); }
+.reviews-written__text { font-size: 0.875rem; color: var(--color-steel); line-height: 1.6; }
+</style>
 
 <section class="dynamo-section section-teal" style="overflow: hidden;">
   <div class="dynamo-container" style="max-width: 80rem;">
