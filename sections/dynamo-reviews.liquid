@@ -5,10 +5,10 @@
 .reviews-video { position: relative; margin-bottom: 2rem; }
 .reviews-video__track { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 0.5rem; }
 .reviews-video__track::-webkit-scrollbar { display: none; }
-.reviews-video__slide { flex: 0 0 75%; scroll-snap-align: start; }
+.reviews-video__slide { flex: 0 0 80%; scroll-snap-align: center; }
 @media (min-width: 640px) { .reviews-video__slide { flex: 0 0 50%; } }
 @media (min-width: 768px) { .reviews-video__slide { flex: 0 0 35%; } }
-@media (min-width: 1024px) { .reviews-video__slide { flex: 0 0 25%; } }
+@media (min-width: 1024px) { .reviews-video__slide { flex: 1 1 0; min-width: 0; scroll-snap-align: none; } }
 .reviews-video__card { border-radius: 1rem; overflow: hidden; }
 .reviews-video__media { position: relative; width: 100%; }
 .reviews-video__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
@@ -20,6 +20,8 @@
 .reviews-video__nav { display: none; position: absolute; top: 50%; transform: translateY(-50%); width: 2rem; height: 2rem; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); color: var(--color-white); align-items: center; justify-content: center; transition: all 0.3s ease; cursor: pointer; }
 .reviews-video__nav:hover { background: var(--color-white); color: var(--color-teal); }
 @media (min-width: 768px) { .reviews-video__nav { display: flex; } }
+@media (min-width: 1024px) { .reviews-video__nav { display: none; } }
+@media (min-width: 1024px) { .reviews-video__track { overflow: hidden; gap: 0.75rem; } }
 .reviews-video__nav--prev { left: -1rem; }
 .reviews-video__nav--next { right: -1rem; }
 .reviews-video__swipe-hint { text-align: center; font-size: 0.75rem; color: rgba(178,190,195,0.5); margin-top: 1rem; }
@@ -37,6 +39,41 @@
 .reviews-written__verified span { font-size: 0.625rem; color: rgba(178,190,195,0.6); }
 .reviews-written__date { font-size: 0.625rem; color: rgba(178,190,195,0.4); }
 .reviews-written__text { font-size: 0.875rem; color: var(--color-steel); line-height: 1.6; }
+</style>
+
+<style>
+  {%- case section.settings.heading_size -%}
+    {%- when 'small' -%}
+      #shopify-section-{{ section.id }} .dynamo-heading { font-size: 1.125rem; }
+      @media(min-width:768px){#shopify-section-{{ section.id }} .dynamo-heading{font-size:1.5rem;}}
+    {%- when 'medium' -%}
+      #shopify-section-{{ section.id }} .dynamo-heading { font-size: 1.5rem; }
+      @media(min-width:768px){#shopify-section-{{ section.id }} .dynamo-heading{font-size:2rem;}}
+    {%- when 'extra-large' -%}
+      #shopify-section-{{ section.id }} .dynamo-heading { font-size: 2.25rem; }
+      @media(min-width:768px){#shopify-section-{{ section.id }} .dynamo-heading{font-size:3.75rem;}}
+  {%- endcase -%}
+  {%- case section.settings.body_size -%}
+    {%- when 'small' -%}
+      #shopify-section-{{ section.id }} p, #shopify-section-{{ section.id }} li { font-size: 0.75rem; }
+    {%- when 'large' -%}
+      #shopify-section-{{ section.id }} p, #shopify-section-{{ section.id }} li { font-size: 1rem; }
+  {%- endcase -%}
+  {%- if section.settings.text_alignment != blank -%}
+    #shopify-section-{{ section.id }} .dynamo-section-header { text-align: {{ section.settings.text_alignment }}; }
+  {%- endif -%}
+  {%- if section.settings.bg_color != blank -%}
+    #shopify-section-{{ section.id }} > section { background-color: {{ section.settings.bg_color }}; }
+  {%- endif -%}
+  {%- if section.settings.heading_color != blank -%}
+    #shopify-section-{{ section.id }} h1, #shopify-section-{{ section.id }} h2, #shopify-section-{{ section.id }} h3, #shopify-section-{{ section.id }} .dynamo-heading { color: {{ section.settings.heading_color }} !important; }
+  {%- endif -%}
+  {%- if section.settings.text_color != blank -%}
+    #shopify-section-{{ section.id }} p, #shopify-section-{{ section.id }} li span, #shopify-section-{{ section.id }} .dynamo-body { color: {{ section.settings.text_color }} !important; }
+  {%- endif -%}
+  {%- if section.settings.block_bg_color != blank -%}
+    #shopify-section-{{ section.id }} [class*="__card"], #shopify-section-{{ section.id }} .reviews-video__slide { background-color: {{ section.settings.block_bg_color }} !important; }
+  {%- endif -%}
 </style>
 
 <section class="dynamo-section section-teal" style="overflow: hidden;">
@@ -177,6 +214,64 @@
       "id": "written_heading",
       "label": "Written Reviews Heading",
       "default": "Written Reviews"
+    },
+    {
+      "type": "header",
+      "content": "Layout & Styling"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading Size",
+      "options": [
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" },
+        { "value": "extra-large", "label": "Extra Large" }
+      ],
+      "default": "large"
+    },
+    {
+      "type": "select",
+      "id": "body_size",
+      "label": "Body Text Size",
+      "options": [
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section Background Color"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Body Text Color"
+    },
+    {
+      "type": "color",
+      "id": "block_bg_color",
+      "label": "Card/Block Background Color"
     }
   ],
   "blocks": [
@@ -241,6 +336,9 @@
         { "type": "video_review", "settings": { "quote": "Honestly, I was surprised how well they worked.", "reviewer_name": "James" } },
         { "type": "video_review", "settings": { "quote": "Works in minutes. More confident and relaxed.", "reviewer_name": "David" } },
         { "type": "video_review", "settings": { "quote": "No weird smell or numbness — just better.", "reviewer_name": "Alex & Jen" } },
+        { "type": "video_review", "settings": { "reviewer_name": "Alex T.", "review_text": "Game changer for real" } },
+        { "type": "video_review", "settings": { "reviewer_name": "Jordan K.", "review_text": "My confidence is through the roof" } },
+        { "type": "video_review", "settings": { "reviewer_name": "Ryan M.", "review_text": "Wish I found this sooner" } },
         { "type": "written_review", "settings": { "reviewer_name": "Matt", "date": "Jan 2026", "review_text": "Doesn't make a mess or smell weird. Just does the job." } },
         { "type": "written_review", "settings": { "reviewer_name": "Sophie D.", "date": "Jan 2026", "review_text": "We noticed a difference right away. Simple but effective." } },
         { "type": "written_review", "settings": { "reviewer_name": "Ben", "date": "Dec 2025", "review_text": "Bought these for a weekend trip. Super easy to pack and use. No complaints from either of us!" } },

@@ -16,6 +16,41 @@
 @media (min-width: 768px) { .risk-free__trust-label { font-size: 0.625rem; } }
 </style>
 
+<style>
+  {%- case section.settings.heading_size -%}
+    {%- when 'small' -%}
+      #shopify-section-{{ section.id }} .dynamo-heading { font-size: 1.125rem; }
+      @media(min-width:768px){#shopify-section-{{ section.id }} .dynamo-heading{font-size:1.5rem;}}
+    {%- when 'medium' -%}
+      #shopify-section-{{ section.id }} .dynamo-heading { font-size: 1.5rem; }
+      @media(min-width:768px){#shopify-section-{{ section.id }} .dynamo-heading{font-size:2rem;}}
+    {%- when 'extra-large' -%}
+      #shopify-section-{{ section.id }} .dynamo-heading { font-size: 2.25rem; }
+      @media(min-width:768px){#shopify-section-{{ section.id }} .dynamo-heading{font-size:3.75rem;}}
+  {%- endcase -%}
+  {%- case section.settings.body_size -%}
+    {%- when 'small' -%}
+      #shopify-section-{{ section.id }} p, #shopify-section-{{ section.id }} li { font-size: 0.75rem; }
+    {%- when 'large' -%}
+      #shopify-section-{{ section.id }} p, #shopify-section-{{ section.id }} li { font-size: 1rem; }
+  {%- endcase -%}
+  {%- if section.settings.text_alignment != blank -%}
+    #shopify-section-{{ section.id }} .dynamo-section-header, #shopify-section-{{ section.id }} .risk-free { text-align: {{ section.settings.text_alignment }}; }
+  {%- endif -%}
+  {%- if section.settings.bg_color != blank -%}
+    #shopify-section-{{ section.id }} > section { background-color: {{ section.settings.bg_color }}; }
+  {%- endif -%}
+  {%- if section.settings.heading_color != blank -%}
+    #shopify-section-{{ section.id }} h1, #shopify-section-{{ section.id }} h2, #shopify-section-{{ section.id }} h3, #shopify-section-{{ section.id }} .dynamo-heading { color: {{ section.settings.heading_color }} !important; }
+  {%- endif -%}
+  {%- if section.settings.text_color != blank -%}
+    #shopify-section-{{ section.id }} p, #shopify-section-{{ section.id }} li span, #shopify-section-{{ section.id }} .dynamo-body { color: {{ section.settings.text_color }} !important; }
+  {%- endif -%}
+  {%- if section.settings.block_bg_color != blank -%}
+    #shopify-section-{{ section.id }} [class*="__card"], #shopify-section-{{ section.id }} .faq-item, #shopify-section-{{ section.id }} .ymal-card { background-color: {{ section.settings.block_bg_color }} !important; }
+  {%- endif -%}
+</style>
+
 <section class="dynamo-section section-cream">
   <div class="dynamo-container" style="max-width: 48rem;">
     <div class="risk-free dynamo-text-center">
@@ -88,6 +123,64 @@
       "type": "url",
       "id": "button_url",
       "label": "Button URL"
+    },
+    {
+      "type": "header",
+      "content": "Layout & Styling"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading Size",
+      "options": [
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" },
+        { "value": "extra-large", "label": "Extra Large" }
+      ],
+      "default": "large"
+    },
+    {
+      "type": "select",
+      "id": "body_size",
+      "label": "Body Text Size",
+      "options": [
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section Background Color"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Body Text Color"
+    },
+    {
+      "type": "color",
+      "id": "block_bg_color",
+      "label": "Card/Block Background Color"
     }
   ],
   "blocks": [
