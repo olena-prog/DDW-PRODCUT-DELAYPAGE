@@ -2,9 +2,11 @@
 .comparison-vs { display: flex; align-items: center; justify-content: center; gap: 1.5rem; margin-bottom: 1.5rem; }
 @media (min-width: 768px) { .comparison-vs { gap: 2rem; } }
 .comparison-vs__item { display: flex; flex-direction: column; align-items: center; gap: 0.75rem; }
-.comparison-vs__item--dynamo .comparison-vs__img, .comparison-vs__item--dynamo .comparison-vs__placeholder { width: 6rem; height: 6rem; border-radius: var(--radius-xl); overflow: hidden; border: 2px solid var(--color-mint); box-shadow: var(--shadow-card); object-fit: cover; }
+.comparison-vs__item--dynamo .comparison-vs__img,
+.comparison-vs__item--dynamo .comparison-vs__placeholder { width: 6rem; height: 6rem; border-radius: 1rem; overflow: hidden; border: 2px solid var(--color-mint); box-shadow: var(--shadow-card); object-fit: cover; }
 @media (min-width: 768px) { .comparison-vs__item--dynamo .comparison-vs__img, .comparison-vs__item--dynamo .comparison-vs__placeholder { width: 8rem; height: 8rem; } }
-.comparison-vs__item--others .comparison-vs__img, .comparison-vs__item--others .comparison-vs__placeholder { width: 6rem; height: 6rem; border-radius: var(--radius-xl); overflow: hidden; border: 2px solid rgba(178,190,195,0.3); opacity: 0.6; object-fit: cover; }
+.comparison-vs__item--others .comparison-vs__img,
+.comparison-vs__item--others .comparison-vs__placeholder { width: 6rem; height: 6rem; border-radius: 1rem; overflow: hidden; border: 2px solid rgba(178,190,195,0.3); opacity: 0.6; object-fit: cover; }
 @media (min-width: 768px) { .comparison-vs__item--others .comparison-vs__img, .comparison-vs__item--others .comparison-vs__placeholder { width: 8rem; height: 8rem; } }
 .comparison-vs__placeholder { display: flex; align-items: center; justify-content: center; background-color: rgba(178,190,195,0.15); }
 .comparison-vs__label { font-family: var(--font-heading); font-size: 0.8125rem; font-weight: 600; }
@@ -13,7 +15,7 @@
 .comparison-vs__label--others { color: var(--color-steel); }
 .comparison-vs__badge { font-family: var(--font-heading); font-size: 0.875rem; font-weight: 800; color: var(--color-charcoal); background: var(--bg-cream); border: 2px solid rgba(178,190,195,0.3); width: 2.5rem; height: 2.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 @media (min-width: 768px) { .comparison-vs__badge { font-size: 1rem; width: 3rem; height: 3rem; } }
-.comparison-table { border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-card); border: 1px solid rgba(178,190,195,0.25); }
+.comparison-table { border-radius: 1rem; overflow: hidden; box-shadow: var(--shadow-card); border: 1px solid rgba(178,190,195,0.25); }
 .comparison-row--header { display: grid; grid-template-columns: 1fr 1fr 1fr; background-color: var(--color-teal); }
 .comparison-row--header .comparison-cell { padding: 0.75rem 1rem; font-family: var(--font-heading); font-size: 0.6875rem; font-weight: 700; color: var(--color-white); text-transform: uppercase; letter-spacing: 0.05em; border-top: none; }
 @media (min-width: 768px) { .comparison-row--header .comparison-cell { padding: 1rem 1.5rem; font-size: 0.8125rem; } }
@@ -29,7 +31,7 @@
 .comparison-check--yes { color: var(--color-mint); }
 .comparison-value { display: inline-block; }
 .comparison-value--others { opacity: 0.8; }
-.comparison-wins { margin-top: 2rem; background-color: var(--color-teal); border-radius: var(--radius-xl); padding: 1.5rem; }
+.comparison-wins { margin-top: 2rem; background-color: var(--color-teal); border-radius: 1rem; padding: 1.5rem; }
 @media (min-width: 768px) { .comparison-wins { padding: 2rem; } }
 .comparison-wins__heading { font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: var(--color-white); margin-bottom: 1.25rem; text-align: center; }
 @media (min-width: 768px) { .comparison-wins__heading { font-size: 1.5rem; margin-bottom: 1.5rem; } }
@@ -253,110 +255,18 @@
     {
       "name": "Lovable Comparison",
       "blocks": [
-        {
-          "type": "comparison_row",
-          "settings": {
-            "feature_name": "Active Ingredient",
-            "dynamo_value": "4% Benzocaine",
-            "others_value": "Lidocaine / unknown",
-            "dynamo_is_check": false,
-            "others_is_check": false
-          }
-        },
-        {
-          "type": "comparison_row",
-          "settings": {
-            "feature_name": "Wipes Per Pack",
-            "dynamo_value": "10 wipes",
-            "others_value": "4\u20136 wipes",
-            "dynamo_is_check": false,
-            "others_is_check": false
-          }
-        },
-        {
-          "type": "comparison_row",
-          "settings": {
-            "feature_name": "Price Per Wipe",
-            "dynamo_value": "~$1.50",
-            "others_value": "~$3.00+",
-            "dynamo_is_check": false,
-            "others_is_check": false
-          }
-        },
-        {
-          "type": "comparison_row",
-          "settings": {
-            "feature_name": "Individually Wrapped",
-            "dynamo_value": "",
-            "others_value": "Varies",
-            "dynamo_is_check": true,
-            "others_is_check": false
-          }
-        },
-        {
-          "type": "comparison_row",
-          "settings": {
-            "feature_name": "Fast Drying",
-            "dynamo_value": "",
-            "others_value": "Often sticky",
-            "dynamo_is_check": true,
-            "others_is_check": false
-          }
-        },
-        {
-          "type": "comparison_row",
-          "settings": {
-            "feature_name": "Wallet-Friendly",
-            "dynamo_value": "",
-            "others_value": "Premium pricing",
-            "dynamo_is_check": true,
-            "others_is_check": false
-          }
-        },
-        {
-          "type": "comparison_row",
-          "settings": {
-            "feature_name": "No Prescription",
-            "dynamo_value": "",
-            "others_value": "",
-            "dynamo_is_check": true,
-            "others_is_check": true
-          }
-        },
-        {
-          "type": "comparison_row",
-          "settings": {
-            "feature_name": "Made in USA",
-            "dynamo_value": "",
-            "others_value": "Varies",
-            "dynamo_is_check": true,
-            "others_is_check": false
-          }
-        },
-        {
-          "type": "win_point",
-          "settings": {
-            "text": "More wipes per pack at a lower cost per use"
-          }
-        },
-        {
-          "type": "win_point",
-          "settings": {
-            "text": "Clinically proven 4% Benzocaine formula"
-          }
-        },
-        {
-          "type": "win_point",
-          "settings": {
-            "text": "Individually wrapped for on-the-go convenience"
-          }
-        },
-        {
-          "type": "win_point",
-          "settings": {
-            "text": "Fast-drying, no sticky residue, made in the USA"
-          }
-        }
+        { "type": "comparison_row", "settings": { "feature_name": "Active Ingredient", "dynamo_value": "4% Benzocaine", "others_value": "Lidocaine / unknown", "dynamo_is_check": false, "others_is_check": false } },
+        { "type": "comparison_row", "settings": { "feature_name": "Wipes Per Pack", "dynamo_value": "10 wipes", "others_value": "4\u20136 wipes", "dynamo_is_check": false, "others_is_check": false } },
+        { "type": "comparison_row", "settings": { "feature_name": "Price Per Wipe", "dynamo_value": "~$1.50", "others_value": "~$3.00+", "dynamo_is_check": false, "others_is_check": false } },
+        { "type": "comparison_row", "settings": { "feature_name": "Individually Wrapped", "dynamo_value": "", "others_value": "Varies", "dynamo_is_check": true, "others_is_check": false } },
+        { "type": "comparison_row", "settings": { "feature_name": "Fast Drying", "dynamo_value": "", "others_value": "Often sticky", "dynamo_is_check": true, "others_is_check": false } },
+        { "type": "comparison_row", "settings": { "feature_name": "Wallet-Friendly", "dynamo_value": "", "others_value": "Premium pricing", "dynamo_is_check": true, "others_is_check": false } },
+        { "type": "comparison_row", "settings": { "feature_name": "No Prescription", "dynamo_value": "", "others_value": "", "dynamo_is_check": true, "others_is_check": true } },
+        { "type": "comparison_row", "settings": { "feature_name": "Made in USA", "dynamo_value": "", "others_value": "Varies", "dynamo_is_check": true, "others_is_check": false } },
+        { "type": "win_point", "settings": { "text": "More wipes per pack at a lower cost per use" } },
+        { "type": "win_point", "settings": { "text": "Clinically proven 4% Benzocaine formula" } },
+        { "type": "win_point", "settings": { "text": "Individually wrapped for on-the-go convenience" } },
+        { "type": "win_point", "settings": { "text": "Fast-drying, no sticky residue, made in the USA" } }
       ]
     }
   ]
